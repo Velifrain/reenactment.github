@@ -41,6 +41,32 @@ return [
             Controller\IndexController::class => InvokableFactory::class,
         ],
     ],
+
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Home',
+                'route' => 'home',
+            ],
+            [
+                'label' => 'User',
+                'route' => 'user',
+                'pages' => [
+                    [
+                        'label' => 'Add',
+                        'route' => 'user',
+                        'action' => 'add',
+                    ],
+                    [
+                        'label' => 'Delete',
+                        'route' => 'user',
+                        'action' => 'delete',
+                    ],
+                ],
+            ],
+        ],
+    ],
+
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
