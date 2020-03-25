@@ -9,9 +9,11 @@
       <Comment>default administrative connection database</Comment>
       <StateNumber>552</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>555</IntrospectionStateNumber>
+      <IntrospectionStateNumber>558</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
+      <Relations>sequence|table|16384|16386|1
+</Relations>
     </database>
     <role id="3" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
@@ -81,7 +83,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>350</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>556</IntrospectionStateNumber>
+      <IntrospectionStateNumber>559</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -141,5 +143,54 @@
       <SchemaName>pg_catalog</SchemaName>
       <SchemaId>11</SchemaId>
     </extension>
+    <sequence id="22" parent="14" name="user_table_id_seq">
+      <ObjectId>16384</ObjectId>
+      <StateNumber>557</StateNumber>
+      <Owner>postgres</Owner>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <table id="23" parent="14" name="user_table">
+      <ObjectId>16386</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>557</StateNumber>
+    </table>
+    <column id="24" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>557</StateNumber>
+      <DefaultExpression>nextval(&apos;user_table_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="25" parent="23" name="email">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>557</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="26" parent="23" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>557</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="27" parent="23" name="user_table_pkey">
+      <ObjectId>16390</ObjectId>
+      <StateNumber>557</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="28" parent="23" name="user_table_pkey">
+      <ObjectId>16391</ObjectId>
+      <StateNumber>557</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>user_table_pkey</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>
