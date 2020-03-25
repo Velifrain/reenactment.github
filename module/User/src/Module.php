@@ -5,17 +5,20 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+namespace User;
+
 /**
- * List of enabled modules for this application.
- *
- * This should be an array of module namespaces used in the application.
+ * Class Module
+ * @package User
  */
-return [
-    'Zend\Navigation',
-    'Zf2Whoops',
-    'Zend\Router',
-    'Zend\Validator',
-    'DoctrineModule',
-    'Application',
-    'User',
-];
+class Module
+{
+    public function getConfig()
+    {
+        return array_merge(
+            include __DIR__ . '/../config/module.config.php',
+            include __DIR__ . '/../config/router.config.php'
+        );
+
+    }
+}
