@@ -3,12 +3,13 @@ declare(strict_types=1);
 
 namespace User\Factory\Service;
 
+
 use Doctrine\ORM\EntityManager;
 use Interop\Container\ContainerInterface;
 use User\Service\UserService;
 use Zend\Authentication\AuthenticationService;
 use Zend\ServiceManager\Factory\FactoryInterface;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 /**
  * Class UserServiceFactory
@@ -16,7 +17,14 @@ use Zend\ServiceManager\ServiceManager;
  */
 class UserServiceFactory implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    /**
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|NULL $options
+     *
+     * @return UserService
+     */
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL): UserService
     {
         /** @var ServiceManager $sm */
         $sm = $container->get(ServiceManager::class);
@@ -29,5 +37,4 @@ class UserServiceFactory implements FactoryInterface
 
         return new UserService($sm, $em, $authService);
     }
-
 }

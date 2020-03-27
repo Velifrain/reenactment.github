@@ -46,9 +46,14 @@ return [
     ],
 
     'service_manager' => [
-        'factory' => [
+        'factories' => [
+            // Form
+            Form\UserForm::class => Factory\Form\UserFormFactory::class,
+            Form\LoginForm::class => Factory\Form\LoginFormFactory::class,
+
+            // Service
             Service\UserService::class => Factory\Service\UserServiceFactory::class,
-        ],
+        ]
     ],
 
     'view_manager' => [
