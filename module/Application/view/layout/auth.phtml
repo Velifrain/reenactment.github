@@ -1,0 +1,34 @@
+<?php
+
+use Zend\View\Helper\Doctype;
+
+$this->headTitle('Reenactment')->setSeparator(' - ')->setAutoEscape(false);
+
+$this->headMeta()
+    ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+    ->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+
+$this->headLink()
+    ->appendStylesheet('/assets/css/bootstrap.min.css')
+    ->appendStylesheet('/assets/font-awesome/css/font-awesome.min.css')
+    ->appendStylesheet('/assets/css/animate.css')
+    ->appendStylesheet('/assets/css/style.css');
+
+$this->inlineScript()
+    ->appendFile('/assets/js/jquery-3.1.1.min.js')
+    ->appendFile('/assets/js/bootstrap.min.js')
+?>
+<?= $this->doctype(Doctype::HTML5) ?>
+<html>
+<head>
+    <?= $this->headTitle() ?>
+    <?= $this->headMeta() ?>
+    <?= $this->headLink() ?>
+</head>
+<body class="gray-bg">
+
+<?= $this->content; ?>
+
+<?= $this->inlineScript() ?>
+</body>
+</html>

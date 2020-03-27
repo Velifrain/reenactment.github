@@ -1,0 +1,57 @@
+<?php
+/**
+ * @var \User\Form\UserForm $form
+ */
+
+$form = $this->form;
+$form->prepare();
+$baseFieldset = $form->getBaseFieldset();
+$this->formElementErrors()
+    ->setMessageOpenFormat('<label class="error">')
+    ->setMessageSeparatorString('</label><label class="error">')
+    ->setMessageCloseString('</label>')
+    ->render($baseFieldset);
+
+$getClass = function (string $elementName) use ($baseFieldset) : string {
+    return $baseFieldset->get($elementName)->getMessages() ? 'form-control error' : 'form-control';
+}
+?>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Add User</h5>
+            </div>
+            <div class="ibox-content">
+                <?= $this->form()->openTag($form); ?>
+
+                <div class="form-group">
+                    <?= $this->formLabel($baseFieldset->get('email')); ?>
+                    <?= $this->formElement($baseFieldset->get('email')->setAttributes(['class' => $getClass('email')])); ?>
+                    <?= $this->formElementErrors($baseFieldset->get('email')); ?>
+                </div>
+
+                <div class="form-group">
+                    <?= $this->formLabel($baseFieldset->get('password')); ?>
+                    <?= $this->formElement($baseFieldset->get('password')->setAttributes(['class' => $getClass('password')])); ?>
+                    <?= $this->formElementErrors($baseFieldset->get('password')); ?>
+                </div>
+
+                <div class="form-group">
+                    <?= $this->formLabel($baseFieldset->get('confirm')); ?>
+                    <?= $this->formElement($baseFieldset->get('confirm')->setAttributes(['class' => $getClass('confirm')])); ?>
+                    <?= $this->formElementErrors($baseFieldset->get('confirm')); ?>
+                </div>
+
+
+                <?= $this->formElement($form->get('csrf')) ?>
+                <button class="btn btn-sm btn-primary m-t-n-xs" type="submit"><strong>Submit</strong></button>
+            </div>
+            <?= $this->form()->closeTag(); ?>
+
+        </div>
+    </div>
+</div>
+
+
